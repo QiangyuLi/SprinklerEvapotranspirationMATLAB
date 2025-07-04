@@ -100,17 +100,3 @@ The author and publisher disclaim all warranties, including but not limited to m
 ## 🚫 No Warranty
 
 In no event shall the author or publisher be liable for any claim, damages, or other liability arising from the use of this software.
-
-```
-
----
-
-### ✅ Final Checklist
-
-- [ ] Add `exportgraphics(...)` or `saveas(...)` to `main.m`
-- [ ] Run `main.m` to generate and save `nomograph_visualization.png`
-- [ ] Place `nomograph_visualization.png` in your repo root
-- [ ] Replace your current `README.md` with the improved one above
-
-Let me know if you'd like help generating the image automatically for different input sets or exporting to formats like PDF or SVG.
-```
