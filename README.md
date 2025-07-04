@@ -1,101 +1,86 @@
-To save the nomograph visualization image from your script and improve the `README.md`, here's what you should do:
-
----
-
-### ✅ **Step 1: Add Saving Code to `main.m`**
-
-At the end of the visualization section, **append this code to save the image**:
-
-```matlab
-% Save the figure as a PNG
-saveas(gcf, 'nomograph_visualization.png');
-```
-
-Or, for better quality:
-
-```matlab
-exportgraphics(gcf, 'nomograph_visualization.png', 'Resolution', 300);
-```
-
-Make sure to run `main.m` after adding that — it will save the image in the current working directory.
-
----
-
-### ✅ **Step 2: Improved `README.md` with Image**
-
-Here’s your updated and improved `README.md`, with the image included, improved formatting, and slight copy edits:
-
-````markdown
 # Sprinkler Evapotranspiration MATLAB Tools
 
-This repository implements the Frost & Schwalen nomograph for estimating water loss due to evaporation during sprinkler irrigation.
+This repository provides a MATLAB-based implementation of the Frost & Schwalen nomograph, which estimates evaporation losses during sprinkler irrigation. The tools included allow both numerical and graphical methods to calculate and visualize water loss due to evapotranspiration.
 
 ---
 
-## 📁 Files
+## 📁 Files Included
 
-- **`main.m`**  
-  Computes evaporation loss *and* generates a visual validation plot using the nomograph.
+### `main.m`
 
-- **`solveNomograph.m`**  
-  Computes evaporation loss numerically (without plotting).
+This is the primary script for visually solving the nomograph. It:
 
----
+* Accepts hard-coded inputs
+* Computes the percent evaporation loss
+* Plots the nomograph with construction lines and points
+* Saves the visualization as an image file (`nomograph_visualization.png`)
 
-## 🧪 Usage
+### `solveNomograph.m`
 
-1. Clone or download the repo.
-2. Add it to your MATLAB path.
-3. Run either script (they use hard-coded example inputs; edit the `inputs` struct near the top to suit your conditions):
-
-   ```matlab
-   % For numeric solution only
-   evaporationLoss = solveNomograph();
-
-   % For visual solution using nomograph
-   run('main.m');
-````
-
-4. Inspect the console output (and the plot, for `main.m`).
+This function provides a numerical-only method (no visualization) for calculating evaporation loss.
 
 ---
 
 ## 📊 Visualization Example
 
-The figure below shows how the nomograph is used geometrically to determine evaporation loss based on your inputs:
+The following image illustrates how the nomograph is used to estimate evaporation loss based on your specified conditions:
 
 ![Nomograph Visualization](nomograph_visualization.png)
 
 ---
 
-## ⚙️ Inputs
+## 🛠️ How to Use
 
-Both tools use the same `inputs` struct fields:
+### 1. Setup
 
-* `vpd` — Vapor‐Pressure Deficit (psi)
-* `nozzle` — Nozzle diameter (in 64ths of an inch)
-* `pressure` — Nozzle pressure (psi)
-* `wind` — Wind velocity (mph)
+* Clone or download this repository.
+* Add the folder to your MATLAB path.
 
-Edit these values in the first few lines of the file you're using.
+### 2. Choose a script to run:
+
+* **Numerical method:**
+
+  ```matlab
+  evaporationLoss = solveNomograph();
+  ```
+* **Graphical method:**
+
+  ```matlab
+  run('main.m');
+  ```
+
+### 3. Customize Inputs
+
+Both scripts use an `inputs` structure at the top with the following fields:
+
+| Field      | Description            | Units            |
+| ---------- | ---------------------- | ---------------- |
+| `vpd`      | Vapor-pressure deficit | psi              |
+| `nozzle`   | Nozzle diameter        | 64ths of an inch |
+| `pressure` | Nozzle pressure        | psi              |
+| `wind`     | Wind velocity          | mph              |
+
+Modify these values to match your real-world conditions.
+
+### 4. Review Results
+
+* **Console Output:** Displays calculated values and intermediate Y-coordinates.
+* **Figure Window (`main.m` only):** Shows the nomograph with your input data visualized.
+* **Saved Image:** `nomograph_visualization.png` is saved in the working directory.
 
 ---
 
 ## 📖 Nomograph Source
 
-Frost, K. R., & Schwalen, H. C. (1960).
-*Evapotranspiration during sprinkler irrigation.*
-**Transactions of the ASAE, 3(1), 18–20.**
-[https://doi.org/10.13031/2013.41072](https://doi.org/10.13031/2013.41072)
+Frost, K. R., & Schwalen, H. C. (1960). *Evapotranspiration during sprinkler irrigation.*
+Transactions of the ASAE, 3(1), 18–20.
+DOI: [https://doi.org/10.13031/2013.41072](https://doi.org/10.13031/2013.41072)
 
 ---
 
 ## ⚠️ Disclaimer
 
-This software is provided **"as is"** without any express or implied warranty.
-The author and publisher disclaim all warranties, including but not limited to merchantability and fitness for a particular purpose.
-
----
+This software is provided **"as is"** without any express or implied warranties. The author and publisher disclaim all warranties, including but not limited to merchantability and fitness for a particular purpose.
 
 ## 🚫 No Warranty
 
